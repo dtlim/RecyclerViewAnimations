@@ -5,6 +5,9 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -21,9 +24,42 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         ButterKnife.bind(this);
-        adapter = new FeedAdapter();
+        adapter = new FeedAdapter(this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter.notifyDataSetChanged();
+        adapter.setFeedItems(getDummyData());
+    }
+
+    private List<FeedItem> getDummyData() {
+        List<FeedItem> items = new ArrayList<>();
+
+        FeedItem item = new FeedItem("Juan Dela Cruz",
+                "@jdc",
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                "30m");
+        item.setImageUrl("http://i.imgur.com/esLt02I.jpg");
+        items.add(item);
+
+        item = new FeedItem("Juan Dela Cruz",
+                "@jdc",
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                "30m");
+        item.setImageUrl("http://starecat.com/content/wp-content/uploads/you-had-one-job-pikachu-tail-ears-fail.jpg");
+        items.add(item);
+
+        item = new FeedItem("Juan Dela Cruz",
+                "@jdc",
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                "30m");
+        item.setImageUrl("https://i.imgur.com/uZQghgm.jpg");
+        items.add(item);
+
+        item = new FeedItem("Juan Dela Cruz",
+                "@jdc",
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                "30m");
+        items.add(item);
+
+        return items;
     }
 }
