@@ -36,50 +36,41 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedViewHolder> {
     @Override
     public void onBindViewHolder(final FeedViewHolder holder, int position) {
         final FeedItem item = feedItems.get(position);
-
-        if(!item.getProfilePictureUrl().isEmpty()) {
-            Picasso.with(context)
-                    .load(item.getProfilePictureUrl())
-                    .fit()
-                    .centerCrop()
-                    .placeholder(R.drawable.ic_profile)
-                    .error(R.drawable.ic_profile)
-                    .into(holder.imageViewProfilePicture);
-        }
-
-        if(!item.getImageUrl().isEmpty()) {
-            holder.imageViewContent.setVisibility(View.VISIBLE);
-            Picasso.with(context)
-                    .load(item.getImageUrl())
-                    .fit()
-                    .centerCrop()
-                    .into(holder.imageViewContent, new Callback() {
-                        @Override
-                        public void onSuccess() {
-
-                        }
-
-                        @Override
-                        public void onError() {
-                            Log.d("IMAGE", "onError: " + item.getImageUrl());
-                            holder.imageViewContent.setVisibility(View.GONE);
-                        }
-                    });
-        }
-        else {
-            holder.imageViewContent.setVisibility(View.GONE);
-        }
-
-        holder.textViewName.setText(item.getName());
-        holder.textViewUsername.setText(item.getUsername());
-        holder.textViewContent.setText(item.getContent());
-        holder.textViewLocation.setText(item.getLocation());
-        holder.textViewTime.setText(item.getTime());
+        holder.setFeedItem(context, item);
+        holder.imageViewRemove.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onClickRemove(holder.getAdapterPosition());
+            }
+        });
+        holder.imageViewStar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onClickStar(holder.getAdapterPosition());
+            }
+        });
     }
 
     public void setFeedItems(List<FeedItem> feedItems) {
         this.feedItems = feedItems;
         notifyDataSetChanged();
+    }
+
+    public void appendItemToSecond(FeedItem item) {
+        int index = feedItems.size() >= 2 ? 1:0;
+        feedItems.add(index, item);
+        notifyDataSetChanged(); // TODO animation
+    }
+
+    public void onClickStar(int index) {
+        FeedItem item = feedItems.get(index);
+        item.setStarred(!item.isStarred());
+        notifyDataSetChanged(); // TODO animation
+    }
+
+    public void onClickRemove(int index) {
+        feedItems.remove(index);
+        notifyDataSetChanged(); // TODO animation
     }
 
     @Override

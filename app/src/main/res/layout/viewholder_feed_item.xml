@@ -78,12 +78,12 @@
             tools:text="30m" />
 
         <ImageView
-            android:id="@+id/imageview_share"
+            android:id="@+id/imageview_remove"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_marginLeft="0dp"
             android:layout_marginTop="8dp"
-            android:src="@drawable/ic_share"
+            android:src="@drawable/ic_remove"
             app:layout_constraintLeft_toLeftOf="@+id/textview_content"
             app:layout_constraintTop_toBottomOf="@+id/imageview_content" />
 
@@ -95,7 +95,7 @@
             android:layout_marginRight="8dp"
             android:layout_marginTop="8dp"
             android:src="@drawable/ic_star_border"
-            app:layout_constraintLeft_toRightOf="@+id/imageview_share"
+            app:layout_constraintLeft_toRightOf="@+id/imageview_remove"
             app:layout_constraintRight_toLeftOf="@+id/textview_location"
             app:layout_constraintTop_toBottomOf="@+id/imageview_content" />
 
