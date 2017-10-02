@@ -32,6 +32,7 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedViewHolder> {
         View view = inflater.inflate(R.layout.viewholder_feed_item, parent, false);
         return new FeedViewHolder(view);
     }
+    
 
     @Override
     public void onBindViewHolder(final FeedViewHolder holder, int position) {
@@ -59,18 +60,18 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedViewHolder> {
     public void appendItemToSecond(FeedItem item) {
         int index = feedItems.size() >= 2 ? 1:0;
         feedItems.add(index, item);
-        notifyDataSetChanged(); // TODO animation
+        notifyItemInserted(index);
     }
 
     public void onClickStar(int index) {
         FeedItem item = feedItems.get(index);
         item.setStarred(!item.isStarred());
-        notifyDataSetChanged(); // TODO animation
+        notifyItemChanged(index);
     }
 
     public void onClickRemove(int index) {
         feedItems.remove(index);
-        notifyDataSetChanged(); // TODO animation
+        notifyItemRemoved(index);
     }
 
     @Override
