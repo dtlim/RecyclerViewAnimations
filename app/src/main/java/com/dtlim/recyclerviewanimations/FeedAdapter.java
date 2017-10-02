@@ -32,6 +32,7 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedViewHolder> {
         View view = inflater.inflate(R.layout.viewholder_feed_item, parent, false);
         return new FeedViewHolder(view);
     }
+    
 
     @Override
     public void onBindViewHolder(final FeedViewHolder holder, int position) {
