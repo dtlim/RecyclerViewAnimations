@@ -14,10 +14,11 @@
  * limitations under the License.
  */
 
-// TODO 0: Note: this code is just mostly copy-pasted from Android's DefaultItemAnimator.
+// Note: this code is just mostly copy-pasted from Android's DefaultItemAnimator.
 // I had to do this because most of the animation queueing logic is already implemented here,
 // and yet you can't change them because DefaultItemAnimator's runPendingAnimations (which handles
 // the queuing logic) relies on the animate...Impl methods, which are package private
+
 
 package com.dtlim.recyclerviewanimations;
 
@@ -97,9 +98,6 @@ public class FeedSimpleItemAnimator extends SimpleItemAnimator {
         }
     }
 
-    // TODO 0b: All of the queued up animations are done executed here.
-    // This method simply pops each item from the pending lists, then executes the corresponding
-    // animate...Impl() method.
     @Override
     public void runPendingAnimations() {
         boolean removalsPending = !mPendingRemovals.isEmpty();
@@ -191,8 +189,6 @@ public class FeedSimpleItemAnimator extends SimpleItemAnimator {
         }
     }
 
-    // TODO 0a: Notice how the animate...() methods only responsibility is to set an inital state for the view (see: animateAdd and animateMove)
-    // and to add the view to the corresponding mPending... list.
     @Override
     public boolean animateRemove(final ViewHolder holder) {
         resetAnimation(holder);
@@ -222,8 +218,6 @@ public class FeedSimpleItemAnimator extends SimpleItemAnimator {
             }).start();
     }
 
-    // TODO 1: Change the add animation - instead of just a fade in, we want the item to slide in.
-
     @Override
     public boolean animateAdd(final ViewHolder holder) {
         resetAnimation(holder);
@@ -234,8 +228,6 @@ public class FeedSimpleItemAnimator extends SimpleItemAnimator {
         return true;
     }
 
-    // TODO 1b: Change how the itemView is animated.
-    // You could refer to our previous FeedItemAnimator on how to do the slide-in animation.
     void animateAddImpl(final ViewHolder holder) {
         final View view = holder.itemView;
         final ViewPropertyAnimator animation = view.animate();
@@ -295,7 +287,7 @@ public class FeedSimpleItemAnimator extends SimpleItemAnimator {
         if (deltaY != 0) {
             view.animate().translationY(0);
         }
-        // TO DO: make EndActions end listeners instead, since end actions aren't called when
+
         // vpas are canceled (and can't end them. why?)
         // need listener functionality in VPACompat for this. Ick.
         final ViewPropertyAnimator animation = view.animate();
@@ -448,7 +440,7 @@ public class FeedSimpleItemAnimator extends SimpleItemAnimator {
         final View view = item.itemView;
         // this will trigger end callback which should set properties to their target values.
         view.animate().cancel();
-        // TO DO if some other animations are chained to end, how do we cancel them as well?
+
         for (int i = mPendingMoves.size() - 1; i >= 0; i--) {
             MoveInfo moveInfo = mPendingMoves.get(i);
             if (moveInfo.holder == item) {
