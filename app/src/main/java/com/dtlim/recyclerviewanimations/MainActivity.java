@@ -40,7 +40,8 @@ public class MainActivity extends AppCompatActivity {
         adapter = new FeedAdapter(this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        // TODO 3: set the RecyclerView's item animator to FeedItemAnimator
+        //recyclerView.setItemAnimator(new FeedItemAnimator());
+        recyclerView.setItemAnimator(new FeedSimpleItemAnimator());
         adapter.setFeedItems(getDummyData());
 
         fab.setOnClickListener(new View.OnClickListener() {
