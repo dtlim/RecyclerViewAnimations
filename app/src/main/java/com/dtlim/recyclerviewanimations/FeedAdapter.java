@@ -19,6 +19,9 @@ import java.util.List;
 
 public class FeedAdapter extends RecyclerView.Adapter<FeedViewHolder> {
 
+    public static final int ACTION_FEED_ITEM_STARRED = 1;
+    public static final int ACTION_FEED_ITEM_UNSTARRED = 2;
+    
     private List<FeedItem> feedItems = new ArrayList<>();
     private Context context;
 
@@ -66,7 +69,8 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedViewHolder> {
     public void onClickStar(int index) {
         FeedItem item = feedItems.get(index);
         item.setStarred(!item.isStarred());
-        notifyItemChanged(index);
+        notifyItemChanged(index, item.isStarred() ? ACTION_FEED_ITEM_STARRED :
+            ACTION_FEED_ITEM_UNSTARRED);
     }
 
     public void onClickRemove(int index) {
