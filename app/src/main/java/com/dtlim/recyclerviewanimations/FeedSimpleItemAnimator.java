@@ -221,8 +221,6 @@ public class FeedSimpleItemAnimator extends SimpleItemAnimator {
     @Override
     public boolean animateAdd(final ViewHolder holder) {
         resetAnimation(holder);
-        // TODO 1a: set the initial state of the holder's itemView.
-        // instead of setting the alpha to 0, translate the itemView out of the screen.
         holder.itemView.setAlpha(0);
         mPendingAdditions.add(holder);
         return true;
