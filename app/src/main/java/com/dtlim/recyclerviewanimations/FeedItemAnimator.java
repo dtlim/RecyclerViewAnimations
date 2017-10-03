@@ -17,7 +17,6 @@ import java.util.List;
 
 public class FeedItemAnimator extends DefaultItemAnimator {
     
-    
     @Override
     public boolean animateAdd(final RecyclerView.ViewHolder holder) {
         holder.itemView.setTranslationX(-holder.itemView.getWidth());
@@ -105,7 +104,6 @@ public class FeedItemAnimator extends DefaultItemAnimator {
     }
     
     private void animateStarred(final FeedViewHolder holder) {
-        Log.d("PAYLOAD", "animateStarred: ");
         AnimatorSet animatorSet = new AnimatorSet();
         
         ObjectAnimator bounceAnimX = ObjectAnimator.ofFloat(holder.imageViewStar, "scaleX", 1f,
@@ -119,7 +117,6 @@ public class FeedItemAnimator extends DefaultItemAnimator {
         animatorSet.addListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(Animator animation) {
-                Log.d("PAYLOAD", "animateUntarred: end");
                 dispatchAnimationFinished(holder);
             }
         });
@@ -131,7 +128,6 @@ public class FeedItemAnimator extends DefaultItemAnimator {
     }
     
     private void animateUnstarred(final FeedViewHolder holder) {
-        Log.d("PAYLOAD", "animateUnstarred: ");
         AnimatorSet animatorSet = new AnimatorSet();
     
         ObjectAnimator bounceAnimX = ObjectAnimator.ofFloat(holder.imageViewStar, "scaleX", 1f,
@@ -145,7 +141,6 @@ public class FeedItemAnimator extends DefaultItemAnimator {
         animatorSet.addListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(Animator animation) {
-                Log.d("PAYLOAD", "animateUnstarred: end");
                 dispatchAnimationFinished(holder);
             }
         });
@@ -156,12 +151,6 @@ public class FeedItemAnimator extends DefaultItemAnimator {
     
     public static class FeedItemHolderInfo extends ItemHolderInfo {
         public int likeAction;
-//        @Override
-//        public ItemHolderInfo setFrom(RecyclerView.ViewHolder holder) {
-//            FeedViewHolder viewHolder = (FeedViewHolder) holder;
-//            this.action = viewHolder.textViewPrice.getText().toString();
-//            return super.setFrom(holder);
-//        }
     }
     
 }
