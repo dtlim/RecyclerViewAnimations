@@ -10,7 +10,13 @@ import android.support.v7.widget.RecyclerView;
  */
 
 public class FeedItemAnimator extends DefaultItemAnimator {
-    
+
+    // TODO 1: Study how animate add is done.
+    // Note how we initially set the translation to exactly outside the screen,
+    // then use View.animate() on holder.itemView to bring it back.
+
+    // Also note that we added a listener in order to call the dispatch...() methods
+    // These methods are required in order inform RecyclerView the status of your animations
     @Override
     public boolean animateAdd(final RecyclerView.ViewHolder holder) {
         holder.itemView.setTranslationX(-holder.itemView.getWidth());
@@ -32,25 +38,11 @@ public class FeedItemAnimator extends DefaultItemAnimator {
         
         return false;
     }
-    
+
+    // TODO 2: Implement the remove animation.  Make the item move out of the screen.  Don't forget
+    // to call the corresponding dispatch methods!
     @Override
     public boolean animateRemove(final RecyclerView.ViewHolder holder) {
-        holder.itemView.animate()
-            .translationX(holder.itemView.getWidth())
-            .setDuration(200)
-            .setListener(new AnimatorListenerAdapter() {
-                @Override
-                public void onAnimationStart(final Animator animation) {
-                    dispatchRemoveStarting(holder);
-                }
-    
-                @Override
-                public void onAnimationEnd(final Animator animation) {
-                    dispatchRemoveFinished(holder);
-                    holder.itemView.setTranslationX(0);
-                }
-            })
-            .start();
         
         return false;
     }
