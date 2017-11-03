@@ -59,18 +59,18 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedViewHolder> {
     public void appendItemToSecond(FeedItem item) {
         int index = feedItems.size() >= 2 ? 1:0;
         feedItems.add(index, item);
-        notifyDataSetChanged(); // TODO animation
+        notifyDataSetChanged();
     }
 
     public void onClickStar(int index) {
         FeedItem item = feedItems.get(index);
         item.setStarred(!item.isStarred());
-        notifyDataSetChanged(); // TODO animation
+        notifyDataSetChanged();
     }
 
     public void onClickRemove(int index) {
         feedItems.remove(index);
-        notifyDataSetChanged(); // TODO animation
+        notifyDataSetChanged();
     }
 
     @Override
