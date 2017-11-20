@@ -80,7 +80,7 @@ public class FeedViewHolder extends RecyclerView.ViewHolder {
             imageViewContent.setVisibility(View.GONE);
         }
 
-        if(item.isStarred()) {
+        if(item.getStarred()) {
             imageViewStar.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_star));
         }
         else {

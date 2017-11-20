@@ -68,8 +68,8 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedViewHolder> {
 
     public void onClickStar(int index) {
         FeedItem item = feedItems.get(index);
-        item.setStarred(!item.isStarred());
-        notifyItemChanged(index, item.isStarred() ? ACTION_FEED_ITEM_STARRED :
+        item.setStarred(!item.getStarred());
+        notifyItemChanged(index, item.getStarred() ? ACTION_FEED_ITEM_STARRED :
             ACTION_FEED_ITEM_UNSTARRED);
     }
 
