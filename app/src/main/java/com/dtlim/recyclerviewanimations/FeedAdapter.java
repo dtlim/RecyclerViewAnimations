@@ -41,13 +41,13 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedViewHolder> {
     public void onBindViewHolder(final FeedViewHolder holder, int position) {
         final FeedItem item = feedItems.get(position);
         holder.setFeedItem(context, item);
-        holder.imageViewRemove.setOnClickListener(new View.OnClickListener() {
+        holder.getImageViewRemove().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 onClickRemove(holder.getAdapterPosition());
             }
         });
-        holder.imageViewStar.setOnClickListener(new View.OnClickListener() {
+        holder.getImageViewStar().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 onClickStar(holder.getAdapterPosition());

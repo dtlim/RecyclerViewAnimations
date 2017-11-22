@@ -106,11 +106,11 @@ public class FeedItemAnimator extends DefaultItemAnimator {
     private void animateStarred(final FeedViewHolder holder) {
         AnimatorSet animatorSet = new AnimatorSet();
         
-        ObjectAnimator bounceAnimX = ObjectAnimator.ofFloat(holder.imageViewStar, "scaleX", 1f,
+        ObjectAnimator bounceAnimX = ObjectAnimator.ofFloat(holder.getImageViewStar(), "scaleX", 1f,
             2f, 1f);
         bounceAnimX.setDuration(500);
     
-        ObjectAnimator bounceAnimY = ObjectAnimator.ofFloat(holder.imageViewStar, "scaleY", 1f,
+        ObjectAnimator bounceAnimY = ObjectAnimator.ofFloat(holder.getImageViewStar(), "scaleY", 1f,
             2f, 1f);
         bounceAnimY.setDuration(500);
     
@@ -130,11 +130,11 @@ public class FeedItemAnimator extends DefaultItemAnimator {
     private void animateUnstarred(final FeedViewHolder holder) {
         AnimatorSet animatorSet = new AnimatorSet();
     
-        ObjectAnimator bounceAnimX = ObjectAnimator.ofFloat(holder.imageViewStar, "scaleX", 1f,
+        ObjectAnimator bounceAnimX = ObjectAnimator.ofFloat(holder.getImageViewStar(), "scaleX", 1f,
             0.25f, 1f);
         bounceAnimX.setDuration(500);
     
-        ObjectAnimator bounceAnimY = ObjectAnimator.ofFloat(holder.imageViewStar, "scaleY", 1f,
+        ObjectAnimator bounceAnimY = ObjectAnimator.ofFloat(holder.getImageViewStar(), "scaleY", 1f,
             0.25f, 1f);
         bounceAnimY.setDuration(500);
     
