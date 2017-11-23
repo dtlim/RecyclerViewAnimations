@@ -7,8 +7,6 @@ import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
-import butterknife.BindView
-import butterknife.ButterKnife
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 
@@ -17,25 +15,16 @@ import com.squareup.picasso.Picasso
  */
 class FeedViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-    @BindView(R.id.imageview_profile_picture)
     var imageViewProfilePicture: ImageView? = null
-    @BindView(R.id.imageview_content)
     var imageViewContent: ImageView? = null
 
-    @BindView(R.id.imageview_remove)
     var imageViewRemove: ImageView? = null
-    @BindView(R.id.imageview_star)
     var imageViewStar: ImageView? = null
 
-    @BindView(R.id.textview_name)
     var textViewName: TextView? = null
-    @BindView(R.id.textview_username)
     var textViewUsername: TextView? = null
-    @BindView(R.id.textview_content)
     var textViewContent: TextView? = null
-    @BindView(R.id.textview_location)
     var textViewLocation: TextView? = null
-    @BindView(R.id.textview_time)
     var textViewTime: TextView? = null
 
     init {
